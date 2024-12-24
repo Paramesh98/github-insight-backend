@@ -5,7 +5,8 @@ const app = express();
 const PORT = 8081;
 
 app.get('/', (req: Request, res: Response) => {
-  res.status(200).send('Hello World');
+  const successStatus = 200;
+  res.status(successStatus).send('Hello World');
 });
 
 app.listen(PORT, () => {

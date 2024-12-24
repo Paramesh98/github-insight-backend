@@ -6,18 +6,16 @@ export default tseslint.config(
   { ignores: ['dist', 'node_modules'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{js,ts}'],
+    files: ['src/**/*.{js,ts}'],
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
-      globals: globals.node,
+      globals: {
+        ...globals.node,
+        express: 'readonly',
+      },
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
       camelcase: ['warn', { properties: 'always' }],
       'capitalized-comments': [
         'warn',
@@ -47,7 +45,7 @@ export default tseslint.config(
       'no-unreachable-loop': 'error',
       'no-useless-assignment': 'error',
       'default-param-last': 'error',
-      'no-console': 'error',
+      'no-console': 'warn',
       'no-empty-function': 'error',
       'no-eq-null': 'error',
       'no-eval': 'error',
@@ -90,6 +88,10 @@ export default tseslint.config(
       'no-process-env': 'warn',
       'no-process-exit': 'warn',
       'no-sync': 'warn',
+      'no-unused-vars': ['error', { argsIgnorePattern: '^next$' }],
+      'no-trailing-spaces': 'error',
+      'prefer-promise-reject-errors': 'warn',
+      'no-undef': 'error',
     },
   }
 );

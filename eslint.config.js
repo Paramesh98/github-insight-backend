@@ -6,28 +6,18 @@ export default tseslint.config(
   { ignores: ['dist', 'node_modules'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['src/**/*.{js,ts}'],
+    files: ['**/*.{js,ts}'],
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
       globals: globals.node,
     },
     rules: {
-      // Core best practices
-      curly: 'error',
-      eqeqeq: 'error',
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
-      'no-eval': 'error',
-      'block-scoped-var': 'error',
-      'default-param-last': 'error',
-      'dot-notation': 'warn',
-
-      // Security rules
-      'no-implied-eval': 'error',
-      'no-new-func': 'error',
-      'no-buffer-constructor': 'error',
-
-      // Style rules
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
       camelcase: ['warn', { properties: 'always' }],
       'capitalized-comments': [
         'warn',
@@ -37,11 +27,6 @@ export default tseslint.config(
           ignoreInlineComments: true,
         },
       ],
-      'arrow-body-style': ['warn', 'as-needed'],
-      'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
-
-      // Import/export rules
-      'no-duplicate-imports': 'error',
       'sort-imports': [
         'error',
         {
@@ -52,25 +37,41 @@ export default tseslint.config(
           allowSeparatedGroups: false,
         },
       ],
-
-      // Node.js specific
-      'global-require': 'error',
-      'callback-return': ['warn', ['callback', 'cb']],
-      'no-mixed-requires': 'warn',
-      'no-process-env': 'warn',
-      'no-process-exit': 'warn',
-      'no-sync': 'warn',
-
-      // Complexity rules
-      complexity: ['warn', { max: 10 }],
-      'max-depth': ['error', 3],
-      'max-nested-callbacks': ['error', 3],
-      'max-lines': ['error', { max: 300, skipComments: true }],
-      'max-params': ['warn', 4],
-      'max-statements': ['warn', 15],
-
-      // Variable rules
+      complexity: ['warn', { max: 4 }],
+      curly: 'error',
+      'default-case': 'error',
+      'no-await-in-loop': 'error',
+      'no-duplicate-imports': 'error',
+      'no-self-compare': 'error',
+      'no-unmodified-loop-condition': 'error',
+      'no-unreachable-loop': 'error',
+      'no-useless-assignment': 'error',
+      'default-param-last': 'error',
+      'no-console': 'error',
+      'no-empty-function': 'error',
+      'no-eq-null': 'error',
+      'no-eval': 'error',
+      'no-lone-blocks': 'error',
+      'no-lonely-if': 'error',
+      'max-depth': ['error', 2],
+      'max-nested-callbacks': ['error', 2],
+      'max-lines': ['error', { max: 150, skipComments: true }],
       'init-declarations': ['error', 'always'],
+      'arrow-body-style': ['warn', 'as-needed'],
+      'block-scoped-var': 'warn',
+      'dot-notation': 'warn',
+      'id-length': ['warn', { min: 3 }],
+      'no-alert': 'warn',
+      'prefer-const': 'warn',
+      'prefer-destructuring': 'warn',
+      'prefer-template': 'warn',
+      'no-magic-numbers': 'error',
+      'no-implicit-globals': 'error',
+      'no-multi-assign': 'error',
+      'no-nested-ternary': 'error',
+      'no-param-reassign': 'error',
+      'no-return-assign': 'error',
+      'no-unneeded-ternary': 'error',
       'no-shadow': [
         'error',
         {
@@ -79,17 +80,16 @@ export default tseslint.config(
           ignoreOnInitialization: false,
         },
       ],
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'no-use-before-define': ['error', { functions: false, classes: true }],
+      'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
+      eqeqeq: 'error',
 
-      // Misc
-      'no-implicit-globals': 'error',
-      'no-magic-numbers': ['error', { ignore: [0, 1], detectObjects: true }],
-      'no-multi-assign': 'error',
-      'no-nested-ternary': 'error',
-      'no-param-reassign': 'error',
-      'no-return-assign': ['error', 'always'],
-      'no-unneeded-ternary': 'error',
+      // Backend-specific rules
+      'global-require': 'error',
+      'callback-return': ['warn', ['callback', 'cb']],
+      'no-mixed-requires': 'warn',
+      'no-process-env': 'warn',
+      'no-process-exit': 'warn',
+      'no-sync': 'warn',
     },
   }
 );

@@ -2,8 +2,8 @@ import axios from 'axios';
 import { config } from '../config/env.js';
 
 const client = axios.create({
-  baseURL: config.GITHUB_API_URL,
-  headers: { Authorization: `token ${config.GITHUB_TOKEN}` },
+  baseURL: config.API_URL_GITHUB,
+  headers: { Authorization: `token ${config.API_TOKEN_GITHUB}` },
 });
 
 export const fetchUser = async (username: string) => {

@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { StatusCodes } from '../enums/status-codes.js';
 import * as githubService from '../services/github.service.js';
 
-export const getUser = async (req: Request, res: Response, next: NextFunction) => {
+export const getUser = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
     const user = await githubService.fetchUser(username);
@@ -16,7 +16,7 @@ export const getUser = async (req: Request, res: Response, next: NextFunction) =
   }
 };
 
-export const getRepos = async (req: Request, res: Response, next: NextFunction) => {
+export const getRepos = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
     const repos = await githubService.fetchRepos(username);
@@ -30,7 +30,7 @@ export const getRepos = async (req: Request, res: Response, next: NextFunction) 
   }
 };
 
-export const getGists = async (req: Request, res: Response, next: NextFunction) => {
+export const getGists = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
     const gists = await githubService.fetchGists(username);
@@ -44,7 +44,7 @@ export const getGists = async (req: Request, res: Response, next: NextFunction) 
   }
 };
 
-export const getOrgs = async (req: Request, res: Response, next: NextFunction) => {
+export const getOrgs = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
     const orgs = await githubService.fetchOrgs(username);

@@ -6,9 +6,8 @@ import * as githubService from '../services/github.service.js';
 export const getUser = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
-    const { page, per_page } = req.query;
 
-    const user = await githubService.fetchUser(username, page as string, per_page as string);
+    const user = await githubService.fetchUser(username);
     res.status(StatusCodes.OK).json({ success: true, data: user });
   } catch (err) {
     logger.error((err as Error)?.message);

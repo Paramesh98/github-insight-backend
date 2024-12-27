@@ -6,8 +6,8 @@ const client = axios.create({
   headers: { Authorization: `token ${config.API_TOKEN_GITHUB}` },
 });
 
-export const fetchUser = async (username: string, page: string = '1', per_page: string = '100') => {
-  const response = await client.get(`/users/${username}?page=${page}&per_page=${per_page}`);
+export const fetchUser = async (username: string) => {
+  const response = await client.get(`/users/${username}`);
   return response.data;
 };
 

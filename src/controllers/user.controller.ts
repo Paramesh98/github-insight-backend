@@ -5,7 +5,9 @@ import * as githubService from '../services/github.service.js';
 export const getUser = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
-    const user = await githubService.fetchUser(username);
+    const { page, per_page } = req.query;
+
+    const user = await githubService.fetchUser(username, page as string, per_page as string);
     res.status(StatusCodes.OK).json({ success: true, data: user });
   } catch (err) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -19,7 +21,9 @@ export const getUser = async (req: Request, res: Response) => {
 export const getRepos = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
-    const repos = await githubService.fetchRepos(username);
+    const { page, per_page } = req.query;
+
+    const repos = await githubService.fetchRepos(username, page as string, per_page as string);
     res.status(StatusCodes.OK).json({ success: true, data: repos });
   } catch (err) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -33,7 +37,9 @@ export const getRepos = async (req: Request, res: Response) => {
 export const getGists = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
-    const gists = await githubService.fetchGists(username);
+    const { page, per_page } = req.query;
+
+    const gists = await githubService.fetchGists(username, page as string, per_page as string);
     res.status(StatusCodes.OK).json({ success: true, data: gists });
   } catch (err) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -47,7 +53,9 @@ export const getGists = async (req: Request, res: Response) => {
 export const getOrgs = async (req: Request, res: Response) => {
   try {
     const { username } = req.params;
-    const orgs = await githubService.fetchOrgs(username);
+    const { page, per_page } = req.query;
+
+    const orgs = await githubService.fetchOrgs(username, page as string, per_page as string);
     res.status(StatusCodes.OK).json({ success: true, data: orgs });
   } catch (err) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

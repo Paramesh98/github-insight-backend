@@ -72,19 +72,29 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Install Heroku CLI
-        run: |
-          curl https://cli-assets.heroku.com/install.sh | sh
-
-      - name: Set up Heroku
-        uses: akhileshns/heroku-deploy@v3.13.15
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
         with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_API_NAME }}
-          heroku_email: ${{ secrets.HEROKU_API_EMAIL }}
+          service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.MY_RENDER_API_KEY }}
 
-      - name: Deploy to Heroku
-        run: git push https://git.Paramesh98/github-insight-backend.git HEAD:refs/heads/main
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Install Heroku CLI
+  #       run: |
+  #         curl https://cli-assets.heroku.com/install.sh | sh
+
+  #     - name: Set up Heroku
+  #       uses: akhileshns/heroku-deploy@v3.13.15
+  #       with:
+  #         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+  #         heroku_app_name: ${{ secrets.HEROKU_API_NAME }}
+  #         heroku_email: ${{ secrets.HEROKU_API_EMAIL }}
+
+  #     - name: Deploy to Heroku
+  #       run: git push https://git.Paramesh98/github-insight-backend.git HEAD:refs/heads/main

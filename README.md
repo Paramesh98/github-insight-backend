@@ -30,7 +30,7 @@ This is the backend API server built with Express.js. It communicates with the G
 
 1. **Clone the repository:**
    ```bash
-   git clone <REPO_URL>
+   git clone [<REPO_URL>](https://github.com/Paramesh98/github-insight-backend.git)
    ```
 2. **Install dependencies:**
    ```bash

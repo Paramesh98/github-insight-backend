@@ -14,5 +14,5 @@ app.use(notFound);
 app.use(errorHandler);
 
 export const server = app.listen(config.PORT, () => {
-  logger.info(`Server listening at port ${config.PORT}, ${config.API_TOKEN_GITHUB}`);
+  logger.info(`Server listening at port ${config.PORT}`);
 });
